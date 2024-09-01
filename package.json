@@ -1,0 +1,51 @@
+{
+  "name": "cucumber",
+  "version": "1.0.0",
+  "description": "Data Matching Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "half-regression-headed-chrome": "cypress run --headed --browser chrome --spec 'cypress/e2e/*.feature'",
+    "full-regression-headed-chrome": "cypress run --headed --browser Edge --spec 'cypress/e2e/match.feature' && cypress run --headed --browser chrome --spec 'cypress/e2e/match2.feature' && cypress run --headed --browser chrome --spec 'cypress/e2e/match3p.feature'",
+    "Full-regression-headed-chrome": "cypress run --headed --browser chrome --spec 'cypress/e2e/Match4q.feature'",
+    "full-regression-headless-chrome": "cypress run --browser chrome --spec 'cypress/e2e/*.feature'",
+    "login-tests-headed": "cypress run -e TAGS=\"@login\" --headed",
+    "login-and-smoke-pack": "cypress run -e TAGS=\"@smoke or @Rule\" --headed",
+    "smoke-pack-headed": "cypress run -e TAGS=\"@smoke\" --headed",
+    "regression-pack-headed": "cypress run -e TAGS=\"@regression and not @smoke\" --headed",
+    "cypress-cloud-single file": "npx cypress run --browser chrome --headed --record --key=0554a5cc-8520-4c7d-b935-4fd3ff955147 --spec cypress/e2e/MatchOperation.feature"
+  },
+  "author": "Yashp",
+  "license": "ISC",
+  "devDependencies": {
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
+    "cypress": "^13.8.1",
+    "cypress-file-upload": "^5.0.8",
+    "cypress-xpath": "^2.0.1",
+    "html-pdf": "^3.0.1",
+    "multiple-cucumber-html-reporter": "^3.6.2",
+    "pdf-puppeteer": "^1.1.11",
+    "react-dom": "^18.3.1",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.5.4"
+  },
+  "cypress-cucumber-preprocessor": {
+    "stepDefinitions": "cypress/support/step_definitions/**/*.js",
+    "html": {
+      "enabled": true,
+      "output": "cypress/reports/cucumber-report/cucumber-report.html"
+    },
+    "messages": {
+      "enabled": true,
+      "output": "cypress/reports/cucumber-ndjson/cucumber-report.ndjson"
+    },
+    "json": {
+      "enabled": true,
+      "formatter": "cucumber-json-formatter",
+      "output": "cypress/reports/cucumber-json/cucumber-report.json"
+    }
+  },
+  "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^20.0.4"
+  }
+}
